@@ -36,3 +36,9 @@ let rev xs =
 
 (* [P-6] Find out whether a list is a palindrome. *)
 let is_palin xs = xs = (rev xs)
+
+(* [P-8] Eliminate consecutive duplicates of list elements. *)
+let rec uniq = function
+  | [] -> []
+  | x :: y :: xs when x = y -> uniq (x :: xs)
+  | x :: xs -> x :: (uniq xs)
