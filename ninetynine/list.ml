@@ -1,22 +1,18 @@
-exception EMPTY_LIST
-exception NOT_ENOUGH_ELEMENTS
-exception INDEX_OUT_OF_BOUND
-
 (* [P-1] Find the last element of a list. *)
 let rec last = function
-  | [] -> raise EMPTY_LIST
+  | [] -> failwith "Empty list"
   | [x] -> x
   | _ :: xs -> last xs
 
 (* [P-2] Find the last but one element of a list. *)
 let rec butlast = function
-  | [] | [_] -> raise NOT_ENOUGH_ELEMENTS
+  | [] | [_] -> failwith "Not enough elements"
   | [x; _] -> x
   | _ :: xs -> butlast xs
 
 (* [P-3] Find the K'th element of a list. *)
 let rec at xs k = match xs, k with
-  | [], _ -> raise INDEX_OUT_OF_BOUND
+  | [], _ -> failwith "Index out of bound"
   | x :: _, k when k == 0 -> x
   | _ :: xs', k -> at xs' (k - 1) 
 
